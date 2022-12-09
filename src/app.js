@@ -8,14 +8,17 @@ const { notFound, errorHandler } = require('./middlewares');
 const app = express();
 
 require('dotenv').config();
-
-app.use(helmet());
-app.use(morgan('dev'));
+// secure
+// app.use(helmet());
+// log
+// app.use(morgan('dev'));
 app.use(bodyParser.json());
 
-const employees = require('./routes/employees');
+//const employees = require('./routes/employees');
+//app.use('/api/employees', employees);
 
-app.use('/api/employees', employees);
+const Usedcar = require('./routes/cars');
+app.use('/api/cars', Usedcar);
 
 app.use(notFound);
 app.use(errorHandler);
