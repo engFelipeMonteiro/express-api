@@ -59,26 +59,27 @@ router.post('/', async (req, res, next) => {
       }
       */
   
-      /*
+      
       // opção 1
-      const newcar = new Usedcar({
-        marca, modelo, ano
-      });
+      const newcar = new Usedcar(req.body);
 
+      // must be used in instance of Usedcar model
       newcar.save(function (err) {
-        if (err) return handleError(err);
+        if (err) {
+            res.status(400);
+            return next(err);
+        }
+        else res.status(201).json(newcar);
         // saved!
       });
       
 
-      res.status(201).json(newcar);
-      */
-
+      
       // opção 2
-      const newcar = await Usedcar.create({
-        marca, modelo, ano
-      })
-      res.status(201).json(newcar);
+      // const newcar = await Usedcar.create(req.body)
+
+      // return
+      // res.status(201).json(newcar);
     } catch (error) {
       next(error);
     }

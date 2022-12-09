@@ -3,15 +3,15 @@ const mongoose = require('mongoose')
 const collection_structure = new mongoose.Schema({
     marca: {
         type: String,
-        require: true
+        required: true
     },
     modelo: {
         type: String,
-        require: true
+        required: true
     },
     ano: {
         type: Number,
-        require: true
+        required: true
     }
 })
 
