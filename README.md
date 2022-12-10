@@ -9,7 +9,7 @@ API Endpoints
 | GET         | api/cars    |Get all cars           |
 | GET         | api/cars/id |Get a specific car         |
 | POST        | api/cars    |Create a new car         |
-| PUT        | api/cars/id    |Update an existing car|
+| PUT(WIP)        | api/cars/id    |Update an existing car|
 | DELETE        | api/cars/id    |Delete an existing car|
 
 ## Quick Start
