@@ -6,11 +6,11 @@ API Endpoints
 
 | Methods     | Urls             |Description            |
 | ----------- | -----------      | -----------        |
-| GET         | api/employees    |Get all employees           |
-| GET         | api/employees/id |Get a specific employee         |
-| POST        | api/employees    |Create a new employee         |
-| PUT        | api/employees/id    |Update an existing employee|
-| DELETE        | api/employees/id    |Delete an existing employee|
+| GET         | api/cars    |Get all cars           |
+| GET         | api/cars/id |Get a specific car         |
+| POST        | api/cars    |Create a new car         |
+| PUT        | api/cars/id    |Update an existing car|
+| DELETE        | api/cars/id    |Delete an existing car|
 
 ## Quick Start
 
@@ -24,8 +24,9 @@ Create the .env file.
 
 ```bash
 DB_URL = localhost/my-employees
-TEST_DB_URL = localhost/test-my-employees
-PORT = 5000
+#TEST_DB_URL = localhost/test-my-employees
+PORT = 5000 # in mac os may need to disable airplay
+TOKEN_KEY = super_secret
 ```
 Install the dependencies.
 

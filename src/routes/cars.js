@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 
 const router = express.Router();
 
-/* Get all employees */
+/* Get all cars */
 router.get('/', async (req, res, next) => {
     try {
     const allCars =  await Usedcar.find({});
@@ -19,8 +19,21 @@ router.get('/', async (req, res, next) => {
     }
   });
 
-/* Delete a specific car */
+/* Get a car */
 router.get('/:id', async (req, res, next) => {
+  try {
+  const { id } = req.params;
+  const aCar =  await Usedcar.find({'_id': id});
+  console.log(`1 car: ${aCar}`);
+    res.json(aCar);
+  } catch (error) {
+    next(error);
+  }
+});
+
+
+/* Delete a specific car */
+router.delete('/:id', async (req, res, next) => {
     try {
       const { id } = req.params;
       const car = await Usedcar.findOne({
@@ -36,7 +49,7 @@ router.get('/:id', async (req, res, next) => {
       });
   
       res.json({
-        message: 'Employee has been deleted',
+        message: 'A car has been deleted',
       });
     } catch (error) {
       next(error);
