@@ -11,13 +11,13 @@ API Endpoints
 | POST        | api/cars    |Create a new car         | Yes |
 | PUT(WIP)    | api/cars/id |Update an existing car | No |
 | DELETE      | api/cars/id |Delete an existing car | No |
-|-------------|-------------|---------------------------|
 
 Auth Endpoints
 
 | Methods | Urls              | Description. |
+| ------- | ----------------  | ------------ |
 | POST    | api/cars/register | Register user |
-| POST.   | api/cars/login.   | login
+| POST    | api/cars/login    | login
 
 ## Quick Start
 
