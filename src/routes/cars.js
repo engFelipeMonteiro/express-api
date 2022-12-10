@@ -1,7 +1,10 @@
 /* eslint-disable consistent-return */
 const express = require('express');
 const Usedcar = require('../db/UsedCar');
-
+const User = require("../db/user");
+const bcrypt = require("bcrypt");
+const auth = require("../middlewares/auth");
+const jwt = require("jsonwebtoken");
 
 const router = express.Router();
 
@@ -42,7 +45,7 @@ router.get('/:id', async (req, res, next) => {
 
 
 /* Create a new employee */
-router.post('/', async (req, res, next) => {
+router.post('/', auth, async (req, res, next) => {
     try {
       const { marca, modelo, ano } = req.body;
       //await Usedcar.validateAsync({ marca, modelo, ano });
@@ -89,11 +92,12 @@ router.post('/', async (req, res, next) => {
 
 // register and login
 // https://www.section.io/engineering-education/how-to-build-authentication-api-with-jwt-token-in-nodejs/
-const User = require("../db/user");
-const bcrypt = require("bcrypt");
+
+
 
 router.post('/login', async (req, res, next) => {
   // Our login logic starts here
+  console.log(`/login`)
   try {
     // Get user input
     const { email, password } = req.body;
@@ -122,7 +126,10 @@ router.post('/login', async (req, res, next) => {
       // user
       res.status(200).json(user);
     }
-    res.status(400).send("Invalid Credentials");
+    else{
+      res.status(400).send("Invalid Credentials");
+
+    }
   } catch (err) {
     console.log(err);
   }

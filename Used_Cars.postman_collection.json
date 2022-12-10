@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "84caa47e-6f34-42a1-a719-7da35ca55bbe",
+		"_postman_id": "70789c4f-18ae-4a4d-9180-2ea3aeda348b",
 		"name": "Used_Cars",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -26,9 +26,97 @@
 		},
 		{
 			"name": "POST",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var token = pm.variables.get('token')"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"modelo\": \"onix\",\r\n    \"marca\": \"chevrolet\",\r\n    \"ano\": \"2021\",\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM5MzkyMzBkMDk5NWQ0ZjYxMjA0NjQxIiwiZW1haWwiOiJzdWRvQGFkbWluLmNvbSIsImlhdCI6MTY3MDY0NjYxOCwiZXhwIjoxNjcwNjUzODE4fQ.eji53sZ28-UPv9FRKNKTiduurajDk9l1KWbbioLbp_M\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/cars",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST 2",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"modelo\": \"onix\",\r\n    \"marca\": \"chevrolet\",\r\n    \"ano\": \"2021\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/cars?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM5MzkyMzBkMDk5NWQ0ZjYxMjA0NjQxIiwiZW1haWwiOiJzdWRvQGFkbWluLmNvbSIsImlhdCI6MTY3MDY0NTY2NywiZXhwIjoxNjcwNjUyODY3fQ.ecZlXuVYQfXkbSFuo2Q7dLVyaf3Kf6Ku4BcWK8fjqaY",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"cars"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM5MzkyMzBkMDk5NWQ0ZjYxMjA0NjQxIiwiZW1haWwiOiJzdWRvQGFkbWluLmNvbSIsImlhdCI6MTY3MDY0NTY2NywiZXhwIjoxNjcwNjUyODY3fQ.ecZlXuVYQfXkbSFuo2Q7dLVyaf3Kf6Ku4BcWK8fjqaY"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST 3",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjM5MzkyMzBkMDk5NWQ0ZjYxMjA0NjQxIiwiZW1haWwiOiJzdWRvQGFkbWluLmNvbSIsImlhdCI6MTY3MDY0NTY2NywiZXhwIjoxNjcwNjUyODY3fQ.ecZlXuVYQfXkbSFuo2Q7dLVyaf3Kf6Ku4BcWK8fjqaY",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"modelo\": \"onix\",\r\n    \"marca\": \"chevrolet\",\r\n    \"ano\": \"2021\"\r\n}",
@@ -54,6 +142,18 @@
 		},
 		{
 			"name": "POST Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.variables.set(\"token\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],

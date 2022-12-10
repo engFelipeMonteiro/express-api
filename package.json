@@ -27,7 +27,8 @@
     "morgan": "^1.10.0",
     "mongoose": "*",
     "swagger-ui-express": "*",
-    "bcrypt": "*"
+    "bcrypt": "*",
+    "jsonwebtoken": "*"
   },
   "devDependencies": {
     "eslint": "^7.31.0",
