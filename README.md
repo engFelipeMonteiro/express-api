@@ -4,13 +4,20 @@ A simple REST API in Node.js
 
 API Endpoints
 
-| Methods     | Urls             |Description            |
-| ----------- | -----------      | -----------        |
-| GET         | api/cars    |Get all cars           |
-| GET         | api/cars/id |Get a specific car         |
-| POST        | api/cars    |Create a new car         |
-| PUT(WIP)        | api/cars/id    |Update an existing car|
-| DELETE        | api/cars/id    |Delete an existing car|
+| Methods     | Urls             |Description            | Require authentication | 
+| ----------- | ----------- | -----------        | ------------------------------ |
+| GET         | api/cars    |Get all cars           | No |
+| GET         | api/cars/id |Get a specific car         | No |
+| POST        | api/cars    |Create a new car         | Yes |
+| PUT(WIP)    | api/cars/id |Update an existing car | No |
+| DELETE      | api/cars/id |Delete an existing car | No |
+|-------------|-------------|---------------------------|
+
+Auth Endpoints
+
+| Methods | Urls              | Description. |
+| POST    | api/cars/register | Register user |
+| POST.   | api/cars/login.   | login
 
 ## Quick Start
 
