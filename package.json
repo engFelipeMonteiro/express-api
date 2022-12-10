@@ -26,7 +26,8 @@
     "monk": "^7.3.3",
     "morgan": "^1.10.0",
     "mongoose": "*",
-    "swagger-ui-express": "*"
+    "swagger-ui-express": "*",
+    "bcrypt": "*"
   },
   "devDependencies": {
     "eslint": "^7.31.0",

@@ -20,6 +20,7 @@ const collection_schema = {
     modelo: String,
     Ano: Number,
   }
+
 const Usedcar = mongoose.model('cars', collection_structure)
 
 module.exports = Usedcar
