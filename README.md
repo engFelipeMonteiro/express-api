@@ -17,12 +17,13 @@ API Endpoints
 Clone the repo.
 
 ```bash
-https://github.com/zagaris/express-api.git
+https://github.com/engFelipeMonteiro/express-api
 cd express-api
 ```
 Create the .env file.
 
-```bash
+```bash (.env)
+
 DB_URL = localhost/my-employees
 #TEST_DB_URL = localhost/test-my-employees
 PORT = 5000 # in mac os may need to disable airplay
