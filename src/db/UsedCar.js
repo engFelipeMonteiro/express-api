@@ -12,7 +12,14 @@ const collection_structure = new mongoose.Schema({
     ano: {
         type: Number,
         required: true
-    }
+    },
+    preco: { type: Number, required: true},
+    cor: String,
+    transmissao: String,
+    kilometragem: Number,
+    localidade: String,
+    img: [String]
+
 })
 
 const collection_schema = {

@@ -5,6 +5,7 @@ const User = require("../db/user");
 const bcrypt = require("bcrypt");
 const auth = require("../middlewares/auth");
 const jwt = require("jsonwebtoken");
+const { object } = require('joi');
 
 const router = express.Router();
 
@@ -12,7 +13,6 @@ const router = express.Router();
 router.get('/', async (req, res, next) => {
     try {
     const allCars =  await Usedcar.find({});
-    console.log(`cars: ${allCars}`);
       res.json(allCars);
     } catch (error) {
       next(error);
@@ -33,7 +33,7 @@ router.get('/:id', async (req, res, next) => {
 
 
 /* Delete a specific car */
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', auth,  async (req, res, next) => {
     try {
       const { id } = req.params;
       const car = await Usedcar.findOne({
@@ -54,6 +54,7 @@ router.delete('/:id', async (req, res, next) => {
     } catch (error) {
       next(error);
     }
+
   });
 
 
@@ -102,6 +103,54 @@ router.post('/', auth, async (req, res, next) => {
     }
     
   });
+
+/* Modify a car */
+router.put('/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const car = await Usedcar.findOne({
+      _id: id,
+    });
+
+    // car does not exist
+    if (!car) {
+      return next();
+    }
+
+    // modify based on paameters
+    car['ano'] = '2016'
+    console.log(req.body)
+    for (const key in req.body) {
+      if (typeof(car[key]) == 'object' && key == 'img') {
+        // add if not in list; if in list remove it (toggle func)
+        if ( car['img'].indexOf(req.body['img'][0]) > -1 ){
+          car['img'].splice(car['img'].indexOf(req.body['img'][0]))
+          console.log('removing image')
+        }
+        else {
+          car['img'].push(req.body['img'][0])
+          console.log('adding image')
+        }
+      }
+      else{
+        console.log(`typeof: ${typeof(car[key])}`);
+        car[key] = req.body[key];
+      }
+      
+    };
+
+    console.log(`car to modify ${car}`)
+    await Usedcar.findOneAndUpdate({_id:id}, car)
+
+    const Newcar = await Usedcar.findOne({
+      _id: id,
+    });
+
+    res.status(201).json(Newcar);
+  } catch (error) {
+    next(error);
+  }
+});
 
 // register and login
 // https://www.section.io/engineering-education/how-to-build-authentication-api-with-jwt-token-in-nodejs/

@@ -4,13 +4,13 @@ A simple REST API in Node.js
 
 API Endpoints
 
-| Methods     | Urls             |Description            | Require authentication | 
-| ----------- | ----------- | -----------        | ------------------------------ |
+| Methods     | Urls             |Description       | Require authentication  | 
+| ----------- | ----------- | --------------------- | ----------------------- |
 | GET         | api/cars    |Get all cars           | No |
-| GET         | api/cars/id |Get a specific car         | No |
-| POST        | api/cars    |Create a new car         | Yes |
-| PUT(WIP)    | api/cars/id |Update an existing car | No |
-| DELETE      | api/cars/id |Delete an existing car | No |
+| GET         | api/cars/id |Get a specific car     | No |
+| POST        | api/cars    |Create a new car       | Yes |
+| PUT(WIP)    | api/cars/id |Update an existing car | Yes |
+| DELETE      | api/cars/id |Delete an existing car | Yes |
 
 Auth Endpoints
 
